@@ -4,6 +4,8 @@ import joblib
 import numpy as np
 import pandas as pd
 from pathlib import Path
+from fastapi.middleware.cors import CORSMiddleware
+
 
 BASE_DIR = Path("/Users/mohamed/irrigation/app")
 
@@ -36,6 +38,14 @@ class IrrigationInput(BaseModel):
     Region: str
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # React dev server
+    allow_methods=["*"],   # allow GET, POST, PUT, DELETE etc.
+    allow_headers=["*"],   # allow all headers
+)
+
+
 
 @app.get("/")
 def read_root():
