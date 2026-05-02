@@ -42,3 +42,7 @@ logs/
 dist/
 build/
 *.egg-info/
+
+# In your .gitignore add:
+node_modules/
+frontend/dist/
